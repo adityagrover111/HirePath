@@ -56,7 +56,8 @@ function Dashboard() {
             <SummaryCard
               key={data?._id}
               colors={CARD_BG[index % CARD_BG.length]}
-              role={data?.topicsToFocus || ""}
+              role={data?.role || ""}
+              topicsToFocus={data?.topicsToFocus || ""}
               experience={data?.experience || "-"}
               questions={data?.questions?.length || "-"}
               description={data?.description || ""}
