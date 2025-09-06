@@ -34,9 +34,6 @@ app.use("/api/questions", questionRoute);
 app.post("/api/ai/generate-questions", protect, generateInterviewQuestions);
 app.post("/api/ai/generate-explanation", protect, generateConceptExplanation);
 
-//serve uploads folder
-app.use("/uploads", express.static("/mnt/data/uploads"));
-
 // Serve static files from the "uploads" folder at the URL path /uploads
 
 const port = process.env.PORT || 5000;

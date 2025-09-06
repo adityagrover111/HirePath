@@ -8,10 +8,7 @@ import { UserContext } from "../../context/userContext";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 
-import uploadImage from "../../utils/uploadImage";
-
 function SignUp({ setCurrentPage }) {
-  const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +18,7 @@ function SignUp({ setCurrentPage }) {
   const { updateUser } = useContext(UserContext);
   async function handleSignUp(e) {
     e.preventDefault();
-    let profileImageUrl = "";
+
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
@@ -37,15 +34,10 @@ function SignUp({ setCurrentPage }) {
     setError("");
 
     try {
-      if (profilePic) {
-        const imgUploadRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadRes.imageUrl || "";
-      }
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
         name: fullName,
         email,
         password,
-        profileImageUrl,
       });
       const { token } = response.data;
       if (token) {
@@ -69,7 +61,6 @@ function SignUp({ setCurrentPage }) {
         Join us today by entering your details below.
       </p>
 
-      <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
       <form onSubmit={handleSignUp}>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-1">
           <Input
