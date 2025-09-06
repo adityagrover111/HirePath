@@ -14,8 +14,8 @@ function AIResponsePreview({ content }) {
           components={{
             code({ node, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || "");
+              const language = match ? match[1] : "";
 
-              const language = match ? match(1) : "";
               const isInLine = !className;
               return !isInLine ? (
                 <CodeBlock
@@ -24,7 +24,7 @@ function AIResponsePreview({ content }) {
                 />
               ) : (
                 <code
-                  className="px1 py-0.5 bg-gray-100 rounded text-sm"
+                  className="px-1 py-0.5 bg-gray-100 rounded text-sm"
                   {...props}
                 >
                   {children}
@@ -156,16 +156,18 @@ function CodeBlock({ code, language }) {
           </span>
         </div>
         <button
-          className="text-gray-500 hover:text-gray-700 focus:outline-none relative group"
+          className="text-gray-500 hover:text-gray-700 focus:outline-none flex items-center space-x-1"
           onClick={copyCode}
           aria-label="Copy code"
         >
           {copied ? (
-            <LuCheck size={16} className="" />
+            <>
+              <LuCheck size={16} className="text-green-600" />
+              <span className="text-xs text-green-600">Copied!</span>
+            </>
           ) : (
-            <LuCopy size={16} className="" />
+            <LuCopy size={16} />
           )}
-          {copied && <span className="">Copied!</span>}
         </button>
       </div>
       <SyntaxHighlighter
