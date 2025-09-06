@@ -8,8 +8,8 @@ import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
 function Login({ setCurrentPage }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("adityagrover@example.com");
+  const [password, setPassword] = useState("TEST");
   const [error, setError] = useState();
   const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
