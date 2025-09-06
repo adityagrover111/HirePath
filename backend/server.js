@@ -16,7 +16,7 @@ const { protect } = require("./middlewares/authMiddleware");
 //middleware to handle cors
 app.use(
   cors({
-    origin: "https://hire-path-ten.vercel.app",
+    origin: ["https://hire-path-ten.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -35,7 +35,8 @@ app.post("/api/ai/generate-questions", protect, generateInterviewQuestions);
 app.post("/api/ai/generate-explanation", protect, generateConceptExplanation);
 
 //serve uploads folder
-app.use("/uploads", express.static(path.join(__dirname, "uploads"), {}));
+app.use("/uploads", express.static("/mnt/data/uploads"));
+
 // Serve static files from the "uploads" folder at the URL path /uploads
 
 const port = process.env.PORT || 5000;

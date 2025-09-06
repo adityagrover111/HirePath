@@ -3,7 +3,7 @@ const multer = require("multer");
 //configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, "/mnt/data/uploads"); // path on the Render volume
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);

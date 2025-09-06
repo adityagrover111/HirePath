@@ -1,4 +1,4 @@
-export const BASE_URL = "https://hire-path-ylcw.vercel.app";
+export const BASE_URL = "https://hirepath-sl27.onrender.com";
 
 export const API_PATHS = {
   AUTH: {
