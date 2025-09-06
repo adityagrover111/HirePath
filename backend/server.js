@@ -16,7 +16,7 @@ const { protect } = require("./middlewares/authMiddleware");
 //middleware to handle cors
 app.use(
   cors({
-    origin: "*",
+    origin: "https://hire-path-ten.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
