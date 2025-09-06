@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/input/Input";
-import ProfilePhotoSelector from "../../components/input/ProfilePhotoSelector";
 import { validateEmail } from "../../utils/helpers";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";

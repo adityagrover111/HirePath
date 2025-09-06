@@ -16,7 +16,7 @@ const { protect } = require("./middlewares/authMiddleware");
 //middleware to handle cors
 app.use(
   cors({
-    origin: ["https://hire-path-ten.vercel.app", "http://localhost:5173"],
+    origin: "https://hire-path-ten.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -36,5 +36,12 @@ app.post("/api/ai/generate-explanation", protect, generateConceptExplanation);
 
 // Serve static files from the "uploads" folder at the URL path /uploads
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running on ${port}`));
+const port = process.env.PORT || 8000; // Changed to 8000 to avoid conflicts
+app.listen(port, "0.0.0.0", (err) => {
+  if (err) {
+    console.error("Error starting server:", err);
+    return;
+  }
+  console.log(`Server is running on http://localhost:${port}`);
+  console.log("CORS enabled for all origins");
+});
